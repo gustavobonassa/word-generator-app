@@ -1,4 +1,3 @@
-import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:whatword/shared/models/word_model.dart';
@@ -11,8 +10,7 @@ class ListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCard(
-      direction: AnimatedCardDirection.left,
+    return Card(
       child: ListTile(
         title: Text(data.word!),
         subtitle: Text(data.translation!),

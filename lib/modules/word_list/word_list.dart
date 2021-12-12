@@ -13,6 +13,32 @@ class WordListPage extends StatefulWidget {
 
 class _WordListPageState extends State<WordListPage> {
   final _controller = WordListController();
+  Future<void> _showMyDialog(e) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete'),
+          content: Text('Are you sure you want to delete this word?'),
+          actions: [
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () => Navigator.pop(context),
+            ),
+            TextButton(
+              child: Text('Delete'),
+              onPressed: () {
+                _controller.deleteWord(e);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,8 +73,9 @@ class _WordListPageState extends State<WordListPage> {
                           .map((e) => ListItemWidget(
                                 data: e,
                                 onPressed: () {
-                                  _controller.deleteWord(e);
-                                  setState(() {});
+                                  _showMyDialog(e);
+                                  // _controller.deleteWord(e);
+                                  // setState(() {});
                                 },
                               ))
                           .toList(),

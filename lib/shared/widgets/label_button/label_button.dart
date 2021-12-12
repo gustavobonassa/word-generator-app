@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatword/shared/themes/app_colors.dart';
-import 'package:whatword/shared/themes/app_text_styles.dart';
 
 class LabelButton extends StatelessWidget {
   final String label;
@@ -15,11 +14,14 @@ class LabelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      child: Text(
-        label,
-        style: TextStyle(
-          color: AppColors.background,
-          fontSize: 20,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: AppColors.background,
+            fontSize: 20,
+          ),
         ),
       ),
       onPressed: onPressed,

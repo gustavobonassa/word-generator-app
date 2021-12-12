@@ -49,7 +49,9 @@ class WordController {
       getRandomWord();
       return goodWords[_random.nextInt(goodWords.length)];
     } else {
-      return badWords[_random.nextInt(badWords.length)];
+      return badWords[_random.nextInt(badWords.length)] +
+          " - the right answer is: " +
+          currentWord.translation!;
     }
   }
 }

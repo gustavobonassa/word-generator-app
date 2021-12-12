@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatword/shared/themes/app_colors.dart';
 
 class InputTextWidget extends StatelessWidget {
   final String label;
@@ -15,7 +16,13 @@ class InputTextWidget extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: TextStyle(color: AppColors.heading),
         hintText: 'Type the $label',
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.primary,
+          ),
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),

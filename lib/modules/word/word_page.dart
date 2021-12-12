@@ -16,6 +16,7 @@ class WordPage extends StatefulWidget {
 
 class _WordPageState extends State<WordPage> {
   final _controller = WordController();
+  final _translationController = TextEditingController();
   void showWebColoredToast(String message) {
     Fluttertoast.showToast(
       msg: message,
@@ -62,6 +63,7 @@ class _WordPageState extends State<WordPage> {
               ),
               InputTextWidget(
                 label: "Translation",
+                controller: _translationController,
                 onChanged: (value) {
                   _controller.onChange(value);
                 },
@@ -74,6 +76,7 @@ class _WordPageState extends State<WordPage> {
                   onPressed: () {
                     String message = _controller.verifyWord();
                     showWebColoredToast(message);
+                    _translationController.clear();
                   }),
             ],
           )),
